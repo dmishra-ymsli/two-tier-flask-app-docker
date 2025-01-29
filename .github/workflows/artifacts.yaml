@@ -1,0 +1,43 @@
+name: Artifacts Demo
+
+# Trigger the workflow manually
+on: workflow_dispatch
+
+jobs:
+  # Job 1: Upload an artifact
+  job_1:
+    name: Upload Artifact
+    runs-on: ubuntu-latest  # Specifies the runner to use, which is the latest version of Ubuntu
+    
+    steps:
+      - name: "Create a local file"
+        run: |
+          # Create a file named file.txt and write a detailed message into it
+          echo "Hi, I am storing this data in this file, so that I can use this in the subsequent jobs within this workflow run. I will upload this file to GitHub storage and download from there when needed in this workflow run." > file.txt
+      
+# In GitHub Actions workflows, the with keyword is used to 
+# specify parameters or inputs that configure the behavior of an action. 
+# The uses keyword allows you to include actions created by others (such as those available in the GitHub Marketplace) 
+# or your own custom actions within your workflows
+      - name: "Upload file as an artifact"
+        uses: actions/upload-artifact@v2
+        with:
+          name: file  # Name of the artifact
+          path: file.txt  # Path to the file to upload
+          retention-days: 10  # The number of days to keep the artifact
+
+  # Job 2: Download and use the artifact
+  job_2:
+    name: Download Artifact
+    runs-on: ubuntu-latest
+    needs: job_1  # Ensures this job runs after job_1 completes successfully
+    steps:
+      - name: "Download the artifact"
+        uses: actions/download-artifact@v2
+        with:
+          name: file  # Specify the name of the artifact to download
+
+      - name: "Printing the file content"
+        run: |
+          # Display the contents of the file.txt to check its content
+          cat file.txt
