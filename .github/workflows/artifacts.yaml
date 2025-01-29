@@ -20,7 +20,7 @@ jobs:
 # The uses keyword allows you to include actions created by others (such as those available in the GitHub Marketplace) 
 # or your own custom actions within your workflows
       - name: "Upload file as an artifact"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: file  # Name of the artifact
           path: file.txt  # Path to the file to upload
@@ -33,7 +33,7 @@ jobs:
     needs: job_1  # Ensures this job runs after job_1 completes successfully
     steps:
       - name: "Download the artifact"
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: file  # Specify the name of the artifact to download
 
