@@ -1,41 +1,27 @@
 name: Passing Values to Next Steps
-# Triggers the workflow manually through GitHub Actions interface
-on: 
-  workflow_dispatch:
+
+on:  workflow_dispatch
 
 jobs:
-  # Job to demonstrate passing values between steps
   passing-values-bw-steps:
-    # Specifies the type of virtual machine to run the job on
     runs-on: ubuntu-latest
     steps:
-      # Step to set environment variables
-      - name: Set the value using ENV Vars
-      # Adds custom environment variables to the GITHUB_ENV
-        run: |
-          echo "step1_var1=this-is-value" >> $GITHUB_ENV
+    - name: Set the value using ENV Vars
+      run: |
+        echo "variableName=this-is-value" >> $GITHUB_ENV
 
-      # Step to create output variables that can be used in subsequent steps
-      - name: Create-Variables
-        id: var_source_step  # Identifier used to reference outputs of this step
-        run: |
-          echo "Performing a random task"
-        # Setting output variable 'var1_name' with a static value
-          echo "::set-output name=var1_name::Sample Output Variable1"
-        # Setting output variable 'var2_date' with current date and time
-          echo "::set-output name=var2_date::$(date +'%Y-%m-%d-%H-%M')"
-        # Setting output variable 'var3_name' with a static value
-          echo "::set-output name=var3_name::Sample Output Variable3"
 
-      # # Step to use the environment and output variables set in previous steps
-      # - name: Get-Variable-Value
-      #   run: |
-      #     echo "Printing the values"
-      #   # Accessing the environment variable 'step1_var1'
-      #     echo step1_var1: ${{ env.step1_var1 }}
-      #   # Accessing the output variable 'var1_name' from 'var_source_step'
-      #     echo var1_name: ${{ steps.var_source_step.outputs.var1_name }} 
-      #   # Accessing the output variable 'var2_date' from 'var_source_step'
-      #     echo var2_date: ${{ steps.var_source_step.outputs.var2_date }} 
-      #   # Accessing the output variable 'var3_name' from 'var_source_step'
-      #     echo var3_name: ${{ steps.var_source_step.outputs.var3_name }} 
+    - name: Create-Variables
+      id: var_source_step
+      run: |
+        echo "Performing a random task"
+        echo "::set-output name=var1_name::TechSckool"
+        echo "::set-output name=var2_date::$(date +'%Y-%m-%d-%H-%M')"
+    
+
+    - name: Get-Variable-Value
+      run: |
+        echo "Printing the values"
+        echo variableName: ${{ env.variableName }} 
+        echo var1_name: ${{ steps.var_source_step.outputs.var1_name }} 
+        echo var2_date: ${{ steps.var_source_step.outputs.var2_date }}
