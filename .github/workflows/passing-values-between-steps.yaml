@@ -1,5 +1,4 @@
 name: Passing Values to Next Steps
-
 # Triggers the workflow manually through GitHub Actions interface
 on: 
   workflow_dispatch:
@@ -12,10 +11,9 @@ jobs:
     steps:
       # Step to set environment variables
       - name: Set the value using ENV Vars
+      # Adds custom environment variables to the GITHUB_ENV
         run: |
-          # Adds custom environment variables to the GITHUB_ENV
           echo "step1_var1=this-is-value" >> $GITHUB_ENV
-          echo "step1_var2=this-is-value-2" >> $GITHUB_ENV
 
       # Step to create output variables that can be used in subsequent steps
       - name: Create-Variables
