@@ -19,7 +19,7 @@ jobs:
   prod-env:
     runs-on: ubuntu-latest
     environment: 
-      name: production
+      name: prod
       url: https://github.com/prod
 
     steps:
