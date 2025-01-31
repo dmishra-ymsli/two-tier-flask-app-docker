@@ -1,0 +1,28 @@
+name: GitHub Environments
+
+on:
+  workflow_dispatch:
+
+jobs:
+  
+  dev-env:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+      url: https://github.com
+    
+    steps:
+      - name: "print from dev environment"
+        run: |
+            echo "APP_SECRET: ${{ secrets.APP_SECRET }}"
+
+  prod-env:
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://github.com
+
+    steps:
+      - name: 'Print secret from environment'
+        run: |
+            echo "APP_SECRET: ${{ secrets.APP_SECRET  }}"
