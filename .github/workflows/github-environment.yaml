@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: dev
-      url: https://github.com
+      url: https://github.com/dev
     
     steps:
       - name: "print from dev environment"
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: production
-      url: https://github.com
+      url: https://github.com/prod
 
     steps:
       - name: 'Print secret from environment'
