@@ -27,15 +27,15 @@ jobs:
         # Setting output variable 'var3_name' with a static value
           echo "::set-output name=var3_name::Sample Output Variable3"
 
-      # Step to use the environment and output variables set in previous steps
-      - name: Get-Variable-Value
-        run: |
-          echo "Printing the values"
-        # Accessing the environment variable 'step1_var1'
-          echo step1_var1: ${{ env.step1_var1 }} 
-        # Accessing the output variable 'var1_name' from 'var_source_step'
-          echo var1_name: ${{ steps.var_source_step.outputs.var1_name }} 
-        # Accessing the output variable 'var2_date' from 'var_source_step'
-          echo var2_date: ${{ steps.var_source_step.outputs.var2_date }}
-        # Accessing the output variable 'var3_name' from 'var_source_step'
-          echo var3_name: ${{ steps.var_source_step.outputs.var3_name }}
+      # # Step to use the environment and output variables set in previous steps
+      # - name: Get-Variable-Value
+      #   run: |
+      #     echo "Printing the values"
+      #   # Accessing the environment variable 'step1_var1'
+      #     echo step1_var1: ${{ env.step1_var1 }}
+      #   # Accessing the output variable 'var1_name' from 'var_source_step'
+      #     echo var1_name: ${{ steps.var_source_step.outputs.var1_name }} 
+      #   # Accessing the output variable 'var2_date' from 'var_source_step'
+      #     echo var2_date: ${{ steps.var_source_step.outputs.var2_date }} 
+      #   # Accessing the output variable 'var3_name' from 'var_source_step'
+      #     echo var3_name: ${{ steps.var_source_step.outputs.var3_name }} 
