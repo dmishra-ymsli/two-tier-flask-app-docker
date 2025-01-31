@@ -1,7 +1,8 @@
 name: Passing Values to Next Steps
 
 # Triggers the workflow manually through GitHub Actions interface
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
 
 jobs:
   # Job to demonstrate passing values between steps
