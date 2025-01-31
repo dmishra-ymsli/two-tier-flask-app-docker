@@ -8,12 +8,11 @@ jobs:
   passing-values-bw-steps:
     # Specifies the type of virtual machine to run the job on
     runs-on: ubuntu-latest
-    
     steps:
-      # Step to set an environment variable
+      # Step to set environment variables
       - name: Set the value using ENV Vars
         run: |
-          # Adds a custom environment variable to the GITHUB_ENV
+          # Adds custom environment variables to the GITHUB_ENV
           echo "step1_var1=this-is-value" >> $GITHUB_ENV
           echo "step1_var2=this-is-value-2" >> $GITHUB_ENV
 
@@ -33,11 +32,11 @@ jobs:
       - name: Get-Variable-Value
         run: |
           echo "Printing the values"
-        # Accessing the environment variable 'variableName'
-          echo variableName: ${{ env.step1_var }} 
+        # Accessing the environment variable 'step1_var1'
+          echo step1_var1: ${{ env.step1_var1 }} 
         # Accessing the output variable 'var1_name' from 'var_source_step'
           echo var1_name: ${{ steps.var_source_step.outputs.var1_name }} 
         # Accessing the output variable 'var2_date' from 'var_source_step'
           echo var2_date: ${{ steps.var_source_step.outputs.var2_date }}
         # Accessing the output variable 'var3_name' from 'var_source_step'
-          echo var1_name: ${{ steps.var_source_step.outputs.var3_name }} 
+          echo var3_name: ${{ steps.var_source_step.outputs.var3_name }}
