@@ -2,8 +2,8 @@
 name: Build & Push Docker Image to ECR
 
 on:
-  push:
-    branches: ["dev", "main"]
+  # push:
+  #   branches: ["dev", "main"]
   pull_request:
     branches: ["main"]  # Ensure tests run on PRs into 'main'
   workflow_dispatch:
