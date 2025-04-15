@@ -1,14 +1,15 @@
+# .github/workflows/pipeline.yaml
 name: Build & Push Docker Image to ECR
 
 on:
   push:
-    branches: ["dev","main"]
+    branches: ["dev", "main"]
   pull_request:
-    branches: ["dev","main"]
-  workflow_dispatch:  
+    branches: ["main"]  # Ensure tests run on PRs into 'main'
+  workflow_dispatch:
 
 jobs:
-  unit-test :
-    # needs: sast
-    if: github.ref == 'refs/heads/main' 
+  unit-test:
     uses: ./.github/workflows/unit-test.yaml
+
+
