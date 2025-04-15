@@ -10,5 +10,5 @@ on:
 jobs:
   unit-test :
     # needs: sast
-    if: github.ref == 'refs/heads/main' 
+    if: github.ref == 'refs/heads/dev' 
     uses: ./.github/workflows/unit-test.yaml
