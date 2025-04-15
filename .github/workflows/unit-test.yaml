@@ -1,0 +1,30 @@
+name: Unit Test Workflow
+
+on:
+  workflow_call:
+
+jobs:
+  test-flask:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Flask tests
+        run: |
+          source .venv/bin/activate
+          pytest -s -v test_app.py
+
+  
