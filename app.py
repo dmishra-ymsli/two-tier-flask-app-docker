@@ -35,7 +35,8 @@ def update_user(user_id):
 
     users[user_id]['name'] = name
     users[user_id]['email'] = email
-
+    
+    print("test")
     return jsonify(users[user_id])
 
 if __name__ == '__main__':
